@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Teen Safety — Safety Amongst Individual Teenagers</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: { display: ['Playfair Display','serif'], body: ['DM Sans','sans-serif'] },
+      colors: { gold:'#F2C94C', teal:'#2A9D8F', darkbg:'#1F252A', ink:'#0A0A0A', ash:'#F4F4F4' }
+    }
+  }
+};
+</script>
+<style>
+html { scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; transition: background .45s, color .45s; }
+
+html.dark  body { background: #0A0A0A; color: #E2E2E8; }
+html.light body { background: #F4F4F4; color: #1F252A; }
+
+/* Nav */
+.nav-glass { backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+html.dark  .nav-glass { background: rgba(10,10,10,.9);    border-bottom: 1px solid rgba(255,255,255,.06); }
+html.light .nav-glass { background: rgba(244,244,244,.93); border-bottom: 1px solid rgba(0,0,0,.08); }
+
+/* Hero noise */
+.noise::before { content:''; position:absolute; inset:0; pointer-events:none; z-index:1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E"); }
+.orb { position:absolute; border-radius:50%; filter:blur(100px); pointer-events:none; }
+
+/* Cards */
+html.dark  .card { background: rgba(255,255,255,.038); border: 1px solid rgba(255,255,255,.08); }
+html.light .card { background: #fff; border: 1px solid rgba(0,0,0,.08); box-shadow: 0 2px 20px rgba(0,0,0,.055); }
+html.dark  .card-h:hover { background: rgba(255,255,255,.068); border-color: rgba(242,201,76,.3); }
+html.light .card-h:hover { border-color: rgba(42,157,143,.4); box-shadow: 0 8px 36px rgba(0,0,0,.1); }
+.card-h { transition: all .3s ease; cursor: pointer; }
+
+/* Expand */
+.xp { max-height:0; overflow:hidden; transition: max-height .5s cubic-bezier(.4,0,.2,1), opacity .4s ease; opacity:0; }
+.xp.open { max-height:1000px; opacity:1; }
+
+/* Badges */
+html.dark  .bg-gold { background: rgba(242,201,76,.13); color: #F2C94C; }
+html.light .bg-gold { background: rgba(242,201,76,.22); color: #876D00; }
+html.dark  .bg-teal { background: rgba(42,157,143,.13); color: #2A9D8F; }
+html.light .bg-teal { background: rgba(42,157,143,.2);  color: #1A6B60; }
+html.dark  .bg-red  { background: rgba(220,60,60,.14);  color: #E07070; }
+html.light .bg-red  { background: rgba(220,60,60,.12);  color: #A03030; }
+
+/* Buttons */
+.btn-g { background: linear-gradient(135deg,#F2C94C,#f7dc7e); color: #1F252A; font-weight: 600; transition: all .3s ease; }
+.btn-g:hover { transform: translateY(-2px); box-shadow: 0 14px 38px rgba(242,201,76,.38); }
+html.dark  .btn-o { border: 1.5px solid rgba(255,255,255,.2); color: #E2E2E8; }
+html.light .btn-o { border: 1.5px solid rgba(31,37,42,.22);  color: #1F252A; }
+.btn-o { transition: all .3s ease; }
+.btn-o:hover { border-color: #F2C94C; color: #F2C94C; }
+.btn-t { background: transparent; border: 2px solid #2A9D8F; color: #2A9D8F; font-weight:600; position:relative; overflow:hidden; transition: all .4s ease; }
+.btn-t::before { content:''; position:absolute; inset:0; background: linear-gradient(135deg,#2A9D8F,#3ab5a6); transform: translateX(-100%); transition: transform .4s ease; z-index:0; }
+.btn-t:hover::before { transform: translateX(0); }
+.btn-t:hover { color:#fff; box-shadow: 0 14px 38px rgba(42,157,143,.38); transform:translateY(-2px); }
+.btn-t span { position:relative; z-index:1; }
+
+/* Divider */
+.div-l { background: linear-gradient(90deg,transparent,rgba(242,201,76,.4),transparent); height:1px; }
+
+/* Callout */
+html.dark  .callout { background: linear-gradient(135deg,rgba(242,201,76,.07),rgba(42,157,143,.055)); border: 1px solid rgba(242,201,76,.2); }
+html.light .callout { background: linear-gradient(135deg,rgba(242,201,76,.09),rgba(42,157,143,.065)); border: 1px solid rgba(242,201,76,.26); }
+
+/* Helplines */
+html.dark  .hl { background: rgba(42,157,143,.065); border: 1px solid rgba(42,157,143,.2); }
+html.light .hl { background: rgba(42,157,143,.07);  border: 1px solid rgba(42,157,143,.25); }
+
+/* Sources */
+html.dark  .src { background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.07); }
+html.light .src { background: #fff; border: 1px solid rgba(0,0,0,.08); }
+
+/* Country cards */
+html.dark  .cc { background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.075); transition: all .28s ease; }
+html.light .cc { background: #fff; border: 1px solid rgba(0,0,0,.08); box-shadow: 0 2px 16px rgba(0,0,0,.05); transition: all .28s ease; }
+html.dark  .cc:hover { background: rgba(255,255,255,.065); border-color: rgba(242,201,76,.3); transform: translateY(-2px); }
+html.light .cc:hover { border-color: rgba(42,157,143,.4); box-shadow: 0 8px 32px rgba(0,0,0,.1); transform: translateY(-2px); }
+.cc-gold { border-left: 3px solid #F2C94C !important; }
+.cc-teal { border-left: 3px solid #2A9D8F !important; }
+.cc-red  { border-left: 3px solid #E05050 !important; }
+.cc-warn { border-left: 3px solid #DC8830 !important; }
+
+/* Comment inputs */
+html.dark  .ci { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1); color: #E2E2E8; }
+html.light .ci { background: #fff; border: 1px solid rgba(0,0,0,.12); color: #1F252A; }
+.ci { outline:none; width:100%; border-radius:12px; padding:14px 16px; font-family:'DM Sans',sans-serif; font-size:14px; transition:all .3s; }
+.ci:focus { border-color:#2A9D8F; box-shadow:0 0 0 3px rgba(42,157,143,.13); }
+.ci::placeholder { opacity:.4; }
+html.dark  .cbubble { background: rgba(255,255,255,.038); border: 1px solid rgba(255,255,255,.07); }
+html.light .cbubble { background: #fff; border: 1px solid rgba(0,0,0,.08); box-shadow: 0 2px 12px rgba(0,0,0,.05); }
+
+/* CTA band */
+html.dark  .cta-band { background: linear-gradient(160deg,rgba(242,201,76,.07),rgba(42,157,143,.055)); }
+html.light .cta-band { background: linear-gradient(160deg,rgba(242,201,76,.09),rgba(42,157,143,.07)); }
+
+/* Footer */
+html.dark  .ft { background: rgba(255,255,255,.018); border-top: 1px solid rgba(255,255,255,.06); }
+html.light .ft { background: rgba(0,0,0,.025); border-top: 1px solid rgba(0,0,0,.08); }
+
+/* Gender pills */
+.pg { background: rgba(220,80,130,.12); color: #e06080; }
+html.light .pg { color: #a02050; }
+.pb { background: rgba(80,130,220,.12); color: #5888d8; }
+html.light .pb { color: #2050a0; }
+.pa { background: rgba(42,157,143,.12); color: #2A9D8F; }
+html.light .pa { color: #1a6b60; }
+
+/* Safety bar */
+.sbar { height:6px; border-radius:99px; width:0; transition: width 1.3s cubic-bezier(.4,0,.2,1); }
+
+/* Toggle */
+.tog { width:46px; height:25px; border-radius:99px; position:relative; cursor:pointer; transition:background .3s; }
+html.dark  .tog { background: rgba(242,201,76,.25); }
+html.light .tog { background: rgba(42,157,143,.35); }
+.tok { width:19px; height:19px; border-radius:50%; position:absolute; top:3px; transition: left .3s, background .3s; }
+html.dark  .tok { left:3px;  background:#F2C94C; }
+html.light .tok { left:24px; background:#2A9D8F; }
+
+/* Nav link */
+.nl { position:relative; }
+.nl::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1.5px; background:#F2C94C; transition:width .28s; }
+.nl:hover::after { width:100%; }
+
+/* Progress */
+#pb { position:fixed; top:0; left:0; height:2.5px; z-index:9999; background:linear-gradient(90deg,#F2C94C,#2A9D8F); transition:width .1s linear; }
+
+/* Animations */
+.fu { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+.fu.on { opacity:1; transform:translateY(0); }
+@keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+.bob { animation:bob 2.4s ease-in-out infinite; }
+
+/* Score label color */
+.s-high { color:#2A9D8F; }
+.s-mid  { color:#F2C94C; }
+.s-warn { color:#DC8830; }
+.s-low  { color:#E05050; }
+
+/* Separator line in cards */
+html.dark  .sep  { border-color: rgba(255,255,255,.06); }
+html.light .sep  { border-color: rgba(0,0,0,.07); }
+</style>
+</head>
+<body>
+
+<div id="pb" style="width:0%"></div>
+
+<!-- ===================== NAV ===================== -->
+<nav class="nav-glass fixed top-0 left-0 right-0 z-50 py-3.5">
+  <div class="max-w-6xl mx-auto px-5 flex items-center justify-between">
+    <a href="#hero" class="font-display text-lg font-semibold" style="color:#F2C94C">SAFE·TEEN</a>
+
+    <div class="hidden md:flex items-center gap-6 text-sm font-body">
+      <a href="#reality"   class="nl opacity-60 hover:opacity-100 transition-opacity">Reality</a>
+      <a href="#global"    class="nl opacity-60 hover:opacity-100 transition-opacity">Global</a>
+      <a href="#issues"    class="nl opacity-60 hover:opacity-100 transition-opacity">Issues</a>
+      <a href="#resources" class="nl opacity-60 hover:opacity-100 transition-opacity">Help</a>
+      <a href="#action"    class="nl opacity-60 hover:opacity-100 transition-opacity">Act</a>
+      <a href="https://forms.gle/5Yh81QKjnnrcyfnr7" target="_blank" class="btn-t text-xs px-4 py-2 rounded-full font-body">
+        <span>📋 Questionnaire</span>
+      </a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <button onclick="toggleTheme()" class="flex items-center gap-2" aria-label="Toggle dark/light">
+        <span id="thm-lbl" class="text-xs opacity-40 font-body hidden sm:block">Dark</span>
+        <div class="tog"><div class="tok"></div></div>
+      </button>
+      <button class="md:hidden opacity-55 hover:opacity-100 transition-opacity" onclick="togMob()">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8">
+          <line x1="2" y1="5" x2="20" y2="5"/><line x1="2" y1="11" x2="20" y2="11"/><line x1="2" y1="17" x2="20" y2="17"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mob-nav" class="hidden md:hidden px-5 pt-4 pb-5 flex flex-col gap-4 border-t border-white/5 mt-2 text-sm font-body">
+    <a href="#reality"   onclick="closeMob()">The Reality</a>
+    <a href="#global"    onclick="closeMob()">Global Safety</a>
+    <a href="#issues"    onclick="closeMob()">Issues</a>
+    <a href="#resources" onclick="closeMob()">Help and Resources</a>
+    <a href="#action"    onclick="closeMob()">Take Action</a>
+    <a href="https://forms.gle/5Yh81QKjnnrcyfnr7" target="_blank" class="font-semibold" style="color:#2A9D8F">📋 Take the Questionnaire</a>
+  </div>
+</nav>
+
+
+<!-- ===================== HERO ===================== -->
+<section id="hero" class="noise relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+  <div class="orb w-[520px] h-[520px] -top-24 -left-32 opacity-[0.11]" style="background:radial-gradient(circle,#F2C94C,transparent)"></div>
+  <div class="orb w-[420px] h-[420px] bottom-0 -right-20 opacity-[0.09]"  style="background:radial-gradient(circle,#2A9D8F,transparent)"></div>
+
+  <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+    <div class="fu inline-flex flex-wrap gap-2 justify-center mb-7">
+      <span class="bg-gold text-xs font-body font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full">Ages 13 to 19 · All Genders</span>
+      <span class="bg-teal text-xs font-body font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full">Awareness · Education · Action</span>
+    </div>
+
+    <h1 class="fu font-display font-semibold leading-[1.05] mb-6" style="font-size:clamp(2.8rem,8vw,5.5rem);transition-delay:.1s">
+      Safety Amongst<br/>
+      <span style="color:#F2C94C">Individual</span><br/>
+      Teenagers
+    </h1>
+
+    <p class="fu font-body text-lg md:text-xl opacity-55 max-w-2xl mx-auto mb-3" style="transition-delay:.2s">
+      To what extent are teenagers imperiled in their daily life?
+    </p>
+    <p class="fu font-body text-sm opacity-40 max-w-xl mx-auto mb-12" style="transition-delay:.3s">
+      A balanced global look at the risks facing boys, girls, and non-binary teens — online, at home, at school, and in the world.
+    </p>
+
+    <div class="fu flex flex-col sm:flex-row flex-wrap gap-3.5 justify-center" style="transition-delay:.4s">
+      <a href="#reality"   class="btn-g  px-8 py-3.5 rounded-full text-sm font-body">Explore the Data</a>
+      <a href="#resources" class="btn-o  px-8 py-3.5 rounded-full text-sm font-body">Find Help in Denmark</a>
+      <a href="https://forms.gle/5Yh81QKjnnrcyfnr7" target="_blank" class="btn-t px-8 py-3.5 rounded-full text-sm font-body">
+        <span>📋 Take the Teen Safety Questionnaire</span>
+      </a>
+    </div>
+
+    <div class="fu bob mt-20" style="transition-delay:.65s">
+      <svg class="mx-auto opacity-20" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="div-l max-w-4xl mx-auto"></div>
+
+
+<!-- ===================== REALITY ===================== -->
+<section id="reality" class="py-28 max-w-6xl mx-auto px-6">
+
+  <div class="text-center mb-20 fu">
+    <p class="text-xs font-body font-semibold tracking-widest uppercase mb-4 opacity-55" style="color:#F2C94C">The Reality</p>
+    <h2 class="font-display text-4xl md:text-5xl font-semibold mb-5">It affects every teenager</h2>
+    <p class="font-body text-base opacity-55 max-w-2xl mx-auto leading-relaxed">
+      Risks do not discriminate by gender. Boys, girls, and non-binary teens all face serious dangers, though the type of risk they face most often differs.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14">
+    <div class="card rounded-2xl p-7 text-center fu" style="transition-delay:.04s">
+      <div class="font-display text-4xl font-bold mb-2" style="color:#F2C94C">37%</div>
+      <div class="font-body text-xs opacity-55 leading-snug">of teens globally have experienced cyberbullying <span class="block opacity-40 mt-1">UNICEF 2023</span></div>
+    </div>
+    <div class="card rounded-2xl p-7 text-center fu" style="transition-delay:.08s">
+      <div class="font-display text-4xl font-bold mb-2" style="color:#2A9D8F">1 in 4</div>
+      <div class="font-body text-xs opacity-55 leading-snug">adolescent girls experience sexual violence before age 20 <span class="block opacity-40 mt-1">WHO</span></div>
+    </div>
+    <div class="card rounded-2xl p-7 text-center fu" style="transition-delay:.12s">
+      <div class="font-display text-4xl font-bold mb-2" style="color:#F2C94C">3×</div>
+      <div class="font-body text-xs opacity-55 leading-snug">more teen boys die by suicide globally than girls <span class="block opacity-40 mt-1">WHO</span></div>
+    </div>
+    <div class="card rounded-2xl p-7 text-center fu" style="transition-delay:.16s">
+      <div class="font-display text-4xl font-bold mb-2" style="color:#2A9D8F">46%</div>
+      <div class="font-body text-xs opacity-55 leading-snug">of teens feel unsafe at school at least once a week <span class="block opacity-40 mt-1">UNICEF</span></div>
+    </div>
+  </div>
+
+  <div class="callout rounded-2xl p-8 md:p-10 mb-12 fu">
+    <h3 class="font-display text-2xl font-semibold mb-7">How Risks Differ But Affect Everyone</h3>
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="card rounded-xl p-6">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="pg text-xs font-semibold px-3 py-1 rounded-full font-body">Girls and Young Women</span>
+        </div>
+        <ul class="space-y-2.5 font-body text-sm opacity-70 leading-snug">
+          <li class="flex gap-2 items-start"><span class="mt-1 flex-shrink-0 w-1.5 h-1.5 rounded-full" style="background:#e06080;margin-top:6px"></span>Higher rates of sexual harassment and assault</li>
+          <li class="flex gap-2 items-start"><span class="mt-1 flex-shrink-0 w-1.5 h-1.5 rounded-full" style="background:#e06080;margin-top:6px"></span>More likely to experience stalking and grooming</li>
+          <li class="flex gap-2 items-start"><span class="mt-1 flex-shrink-0 w-1.5 h-1.5 rounded-full" style="background:#e06080;margin-top:6px"></span>More frequent victims of image-based abuse</li>
+          <li class="flex gap-2 items-start"><span class="mt-1 flex-shrink-0 w-1.5 h-1.5 rounded-full" style="background:#e06080;margin-top:6px"></span>Higher rates of self-harm and eating disorders</li>
+          <li class="flex gap-2 items-start"><span class="mt-1 flex-shrink-0 w-1.5 h-1.5 rounded-full" style="background:#e06080;margin-top:6px"></span>Greater exposure to domestic and partner abuse</li>
+        </ul>
+      </div>
+      <div class="card rounded-xl p-6">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="pb text-xs font-semibold px-3 py-1 rounded-full font-body">Boys and Young Men</span>
+        </div>
+        <ul class="space-y-2.5 font-body text-sm opacity-70 leading-snug">
+          <li class="flex gap-2 items-start"><span class="flex-shrink-0 w-1.5 h-1.5 rounded-full" style="background:#5888d8;margin-top:6px"></span>Higher rates of physical violence and assault</li>
+          <li class="flex gap-2 items-start"><span class="flex-shrink-0 w-1.5 h-1.5 rounded-full" style="background:#5888d8;margin-top:6px"></span>Greater exposure to gang pressure and violence</li>
+          <li class="flex gap-2 items-start"><span class="flex-shrink-0 w-1.5 h-1.5 rounded-full" style="background:#5888d8;margin-top:6px"></span>3 times more likely to die by completed suicide</li>
+          <li class="flex gap-2 items-start"><span class="flex-shrink-0 w-1.5 h-1.5 rounded-full" style="background:#5888d8;margin-top:6px"></span>Underreport abuse because of social stigma</li>
+          <li class="flex gap-2 items-start"><span class="flex-shrink-0 w-1.5 h-1.5 rounded-full" style="background:#5888d8;margin-top:6px"></span>More likely to be victims of severe physical bullying</li>
+        </ul>
+      </div>
+      <div class="card rounded-xl p-6">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="pa text-xs font-semibold px-3 py-1 rounded-full font-body">All Genders — Equal Risk</span>
+        </div>
+        <div class="flex flex-wrap gap-2 font-body text-xs opacity-65">
+          <span class="card px-2.5 py-1 rounded-full">Cyberbullying</span>
+          <span class="card px-2.5 py-1 rounded-full">Online harassment</span>
+          <span class="card px-2.5 py-1 rounded-full">Peer pressure</span>
+          <span class="card px-2.5 py-1 rounded-full">Substance use</span>
+          <span class="card px-2.5 py-1 rounded-full">Discrimination</span>
+          <span class="card px-2.5 py-1 rounded-full">Mental health crises</span>
+          <span class="card px-2.5 py-1 rounded-full">Stalking</span>
+          <span class="card px-2.5 py-1 rounded-full">Emotional abuse</span>
+          <span class="card px-2.5 py-1 rounded-full">Academic pressure</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card rounded-2xl p-8 md:p-12 fu">
+    <div class="grid md:grid-cols-2 gap-10 items-start">
+      <div>
+        <h3 class="font-display text-2xl font-semibold mb-4">Why This Matters Now</h3>
+        <p class="font-body text-sm opacity-65 mb-4 leading-relaxed">Adolescence (ages 13 to 19) is among the most formative periods of human development. Trauma, harassment, or sustained danger during these years has lasting consequences on mental health, academic outcomes, and future relationships.</p>
+        <p class="font-body text-sm opacity-65 leading-relaxed">The digital revolution has created entirely new threat landscapes. Social media, messaging apps, and online communities expose teenagers to risks that did not exist a generation ago. Awareness, open dialogue, and solid support systems are the first line of defence.</p>
+      </div>
+      <div class="space-y-4">
+        <div class="flex items-start gap-3.5">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(242,201,76,.15)"><div class="w-1.5 h-1.5 rounded-full" style="background:#F2C94C"></div></div>
+          <p class="font-body text-sm opacity-65 leading-relaxed">Most incidents go unreported. Boys especially tend to stay silent due to stigma around showing vulnerability.</p>
+        </div>
+        <div class="flex items-start gap-3.5">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(42,157,143,.15)"><div class="w-1.5 h-1.5 rounded-full" style="background:#2A9D8F"></div></div>
+          <p class="font-body text-sm opacity-65 leading-relaxed">Online harassment follows teens home, removing all safe havens and amplifying harm around the clock.</p>
+        </div>
+        <div class="flex items-start gap-3.5">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(242,201,76,.15)"><div class="w-1.5 h-1.5 rounded-full" style="background:#F2C94C"></div></div>
+          <p class="font-body text-sm opacity-65 leading-relaxed">Teens who receive early safety education are significantly more likely to seek help when they need it.</p>
+        </div>
+        <div class="flex items-start gap-3.5">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:rgba(42,157,143,.15)"><div class="w-1.5 h-1.5 rounded-full" style="background:#2A9D8F"></div></div>
+          <p class="font-body text-sm opacity-65 leading-relaxed">Communities with open adult–teen communication show better mental health outcomes and lower rates of sustained abuse.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="div-l max-w-4xl mx-auto"></div>
+
+
+<!-- ===================== GLOBAL SAFETY SNAPSHOT ===================== -->
+<section id="global" class="py-28 max-w-6xl mx-auto px-6">
+
+  <div class="text-center mb-16 fu">
+    <p class="text-xs font-body font-semibold tracking-widest uppercase mb-4 opacity-55" style="color:#F2C94C">Global Safety Snapshot</p>
+    <h2 class="font-display text-4xl md:text-5xl font-semibold mb-5">Safety Around the World</h2>
+    <p class="font-body text-base opacity-55 max-w-2xl mx-auto leading-relaxed">
+      How safe do people feel walking alone at night? The Gallup Law and Order Index 2025 reveals striking differences between countries, and between street safety and adolescent wellbeing.
+    </p>
+  </div>
+
+  <!-- Top 2 spotlight -->
+  <div class="grid md:grid-cols-2 gap-5 mb-12">
+    <div class="callout rounded-2xl p-7 fu">
+      <div class="flex items-start gap-4">
+        <span class="text-4xl flex-shrink-0">🇸🇬</span>
+        <div>
+          <div class="flex flex-wrap items-center gap-2 mb-2">
+            <h3 class="font-display text-xl font-semibold">Singapore</h3>
+            <span class="bg-gold text-xs px-3 py-1 rounded-full font-body font-semibold">Number 1 Safest · Gallup 2025</span>
+          </div>
+          <div class="font-display text-4xl font-bold mb-3" style="color:#F2C94C">98%</div>
+          <p class="font-body text-sm opacity-65 leading-relaxed">The highest perceived safety score in the world. Strong rule of law, very low street crime, and well-lit public spaces. For teenagers, academic pressure is the dominant concern alongside rising cyberbullying rates.</p>
+        </div>
+      </div>
+    </div>
+    <div class="callout rounded-2xl p-7 fu" style="transition-delay:.07s">
+      <div class="flex items-start gap-4">
+        <span class="text-4xl flex-shrink-0">🇹🇯</span>
+        <div>
+          <div class="flex flex-wrap items-center gap-2 mb-2">
+            <h3 class="font-display text-xl font-semibold">Tajikistan</h3>
+            <span class="bg-teal text-xs px-3 py-1 rounded-full font-body font-semibold">Number 2 Safest · Gallup 2025</span>
+          </div>
+          <div class="font-display text-4xl font-bold mb-3" style="color:#2A9D8F">95%</div>
+          <p class="font-body text-sm opacity-65 leading-relaxed">Strong community cohesion drives very high street safety scores. Important nuance: domestic abuse and early marriage affecting teen girls are significantly underreported. High street safety does not equal absence of all private-sphere risk.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Safety bar chart -->
+  <div class="card rounded-2xl p-8 mb-12 fu">
+    <h3 class="font-display text-xl font-semibold mb-1">Perceived Night-time Safety Index</h3>
+    <p class="font-body text-xs opacity-40 mb-8">Percentage who feel safe walking alone at night — Gallup Law and Order Index 2025</p>
+    <div id="bar-ct" class="space-y-3.5"></div>
+    <p class="font-body text-xs opacity-30 mt-6">Note: Street safety perception is not the same as absence of all teen risk. Domestic, online, and school-based dangers require separate assessment. Sources: Gallup 2025, UNICEF, WHO.</p>
+  </div>
+
+  <!-- Individual country cards — full grid -->
+  <div class="mb-8 fu">
+    <h3 class="font-display text-2xl font-semibold mb-2">Country-by-Country Overview</h3>
+    <p class="font-body text-sm opacity-45 mb-7">Select any country for a balanced teen safety overview for ages 13 to 19.</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4" id="country-grid">
+    <!-- Cards generated by JS -->
+  </div>
+
+</section>
+
+<div class="div-l max-w-4xl mx-auto"></div>
+
+
+<!-- ===================== ISSUES ===================== -->
+<section id="issues" class="py-28 max-w-6xl mx-auto px-6">
+
+  <div class="text-center mb-20 fu">
+    <p class="text-xs font-body font-semibold tracking-widest uppercase mb-4 opacity-55" style="color:#F2C94C">Main Issues</p>
+    <h2 class="font-display text-4xl md:text-5xl font-semibold mb-5">Understanding the Risks</h2>
+    <p class="font-body text-base opacity-55 max-w-2xl mx-auto">Select any issue to explore what it looks like, who is most affected, and what to do.</p>
+  </div>
+
+  <div class="space-y-4">
+
+    <!-- Sexual Harassment -->
+    <div class="card card-h rounded-2xl overflow-hidden fu" onclick="togI('i1')">
+      <div class="p-6 md:p-7 flex items-start gap-5">
+        <div class="w-11 h-11 rounded-xl flex-shrink-0 flex items-center justify-center" style="background:rgba(220,80,130,.12)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e06080" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-2"><span class="pg text-xs font-semibold px-2.5 py-0.5 rounded-full font-body">Higher risk: Girls</span><span class="pa text-xs font-semibold px-2.5 py-0.5 rounded-full font-body">All genders online</span></div>
+              <h3 class="font-display text-xl md:text-2xl font-semibold">Sexual Harassment</h3>
+            </div>
+            <div id="ic-i1" class="flex-shrink-0 transition-transform duration-300 mt-1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="opacity-30"><path d="M6 9l6 6 6-6"/></svg></div>
+          </div>
+          <p class="font-body text-sm opacity-50 mt-1.5">Unwanted sexual attention, comments, or advances, both online and in person. Girls face substantially higher rates; boys are also affected and far less likely to report.</p>
+        </div>
+      </div>
+      <div class="xp" id="i1">
+        <div class="px-6 md:px-7 pb-7 grid md:grid-cols-3 gap-5 border-t sep border-t">
+          <div class="pt-5"><h4 class="font-body font-semibold text-sm mb-3" style="color:#F2C94C">What it looks like</h4><ul class="space-y-2 font-body text-xs opacity-65 leading-snug"><li>Unsolicited sexual images or messages</li><li>Pressure to share intimate photos (sextortion)</li><li>Unwanted touching or sexualised comments</li><li>Grooming by older individuals online</li></ul></div>
+          <div class="pt-5"><h4 class="font-body font-semibold text-sm mb-3" style="color:#F2C94C">Signs to watch for</h4><ul class="space-y-2 font-body text-xs opacity-65 leading-snug"><li>Withdrawal from social activities</li><li>Anxiety or distress around devices</li><li>Reluctance to attend school or events</li></ul></div>
+          <div class="pt-5"><h4 class="font-body font-semibold text-sm mb-3" style="color:#F2C94C">What to do</h4><ul class="space-y-2 font-body text-xs opacity-65 leading-snug"><li>No one is entitled to your body or images</li><li>Block, report, and screenshot evidence</li><li>DK: BørneTelefonen 116 111</li></ul></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cyberbullying -->
+    <div class="card card-h rounded-2xl overflow-hidden fu" onclick="togI('i2')">
+      <div class="p-6 md:p-7 flex items-start gap-5">
+        <div class="w-11 h-11 rounded-xl flex-shrink-0 flex items-center justify-center" style="background:rgba(242,201,76,.12)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F2C94C" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-2"><span class="pa text-xs font-semibold px-2.5 py-0.5 rounded-full font-body">All genders · 37% of teens affected</span></div>
+              <h3 class="font-display text-xl md:text-2xl font-semibold">Cyberbullying and Online Harassment</h3>
+            </div>
+            <div id="ic-i2" class="flex-shrink-0 transition-transform duration-300 mt-1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="opacity-30"><path d="M6 9l6 6 6-6"/></svg></div>
+          </div>
+          <p class="font-body text-sm opacity-50 mt-1.5">Online harassment follows teens home, removing all safe spaces. 37% of teens globally are affected (UNICEF). It causes severe documented harm to mental health and academic performance.</p>
+        </div>
+      </div>
+      <div class="xp" id="i2">
+        <div class="px-6 md:px-7 pb-7 grid md:grid-cols-3 gap-5 border-t sep border-t">
+          <div class="pt-5"><h4 class="font-body font-semibold text-sm mb-3" style="color:#F2C94C">What it looks like</h4><ul class="space-y-2 font-body text-xs opacity-65 leading-snug"><li>Hate messages, threats, or slurs online</li><li>Fake profiles created to humiliate</li><li>Non-consensual sharing of images</li><li>Public exclusion from group chats</li></ul></div>
+          <div class="pt-5"><h4 class="font-body font-semibold text-sm mb-3" style="color:#F2C94C">Signs to watch for</h4><ul class="space-y-2 font-body text-xs opacity-65 leading-snug"><li>Visibly upset after using a device</li><li>Avoiding school or social activities</li><li>Hiding screen content suddenly</li></ul></div>
+          <div class="pt-5"><h4 class="font-body font-semibold text-sm mb-3" style="color:#F2C94C">What to do</h4><ul class="space-y-2 font-body text-xs opacity-65 leading-snug"><li>Screenshot then block — do not engage</li><li>Report to the platform and a trusted adult</li><li>DK: Cyberhus.dk · BørneTelefonen 116 111</li></ul></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Physical Violence -->
+    <div class="card card-h rounded-2xl overflow-hidden fu" onclick="togI('i3')">
+      <div class="p-6 md:p-7 flex items-start gap-5">
+        <div class="w-11 h-11 rounded-xl flex-shrink-0 flex items-center justify-center" style="background:rgba(80,130,220,.12)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5888d8" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-2"><span class="pb text-xs font-semibold px-2.5 py-0.5 rounded-full font-body">Higher physical risk: Boys</span><span class="pa text-xs font-semibold px-2.5 py-0.5 rounded-full font-body">Emotional bullying: All genders</span></div>
+              <h3 class="font-display text-xl md:text-2xl font-semibold">Physical Violence and Bullying</h3>
+            </div>
+            <div id="ic-i3" class="flex-shrink-0 transition-transform duration-300 mt-1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="opacity-30"><path d="M6 9l6 6 6-6"/></svg></div>
+          </div>
+          <p class="font-body text-sm opacity-50 mt-1.5">Boys are more likely to be victims and perpetrators of physical bullying; girls more often face relational bullying. Both cause lasting harm. Gang-related violence disproportionately affects teenage boys in urban areas.</p>
+        </div>
+      </div>
+      <div class="xp" id="i3">
+        <div class="px-6 md:px-7 pb-7 grid md:grid-cols-3 gap-5 border-t sep border-t">
+          <div class="pt-5"><h4 class="font-body font-semibold text-sm mb-3" style="color:#F2C94C">What it looks like</h4><ul class="space-y-2 font-body text-xs opacity-65 leading-snug"><li>Physical attacks or intimidation at school</li><li>Systematic social exclusion and gossip</li><li>Gang-related coercion and threats</li></ul></div>
+          <div class="pt-5"><h4 class="font-body font-semibold text-sm mb-3" style="color:#F2C94C">Signs to watch for</h4><ul class="space-y-2 font-body text-xs opacity-65 leading-snug"><li>Unexplained injuries or damaged belongings</li><li>Reluctance to attend school</li><li>Sudden withdrawal or aggression</li></ul></div>
+          <div class="pt-5"><h4 class="font-body font-semibold text-sm mb-3" style="color:#F2C94C">What to do</h4><ul class="space-y-2 font-body text-xs opacity-65 leading-snug"><li>Tell a trusted adult or school counsellor</li><li>Document incidents with dates and details</li><li>DK: Politiet (non-emergency) 114</li></ul></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mental Health -->
+    <div class="card card-h rounded-2xl overflow-hidden fu" onclick="togI('i4')">
+      <div class="p-6 md:p-7 flex items-start gap-5">
+        <div class="w-11 h-11 rounded-xl flex-shrink-0 flex items-center justify-center" style="background:rgba(42,157,143,.12)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A9D8F" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-2"><span class="pg text-xs font-semibold px-2.5 py-0.5 rounded-full font-body">Self-harm higher: Girls</span><span class="pb text-xs font-semibold px-2.5 py-0.5 rounded-full font-body">Suicide higher: Boys (3×)</span></div>
+              <h3 class="font-display text-xl md:text-2xl font-semibold">Peer Pressure, Self-Harm and Mental Health</h3>
+            </div>
+            <div id="ic-i4" class="flex-shrink-0 transition-transform duration-300 mt-1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="opacity-30"><path d="M6 9l6 6 6-6"/></svg></div>
+          </div>
+          <p class="font-body text-sm opacity-50 mt-1.5">Peer pressure drives risk-taking across all genders. Girls self-harm at higher rates; boys are 3 times more likely to die by suicide, partly because boys are far less likely to seek help.</p>
+        </div>
+      </div>
+      <div class="xp" id="i4">
+        <div class="px-6 md:px-7 pb-7 grid md:grid-cols-3 gap-5 border-t sep border-t">
+          <div class="pt-5"><h4 class="font-body font-semibold text-sm mb-3" style="color:#F2C94C">What it looks like</h4><ul class="space-y-2 font-body text-xs opacity-65 leading-snug"><li>Pressure to drink, use drugs, or take risks</li><li>Self-harm as a coping mechanism</li><li>Social media fuelling body image issues</li></ul></div>
+          <div class="pt-5"><h4 class="font-body font-semibold text-sm mb-3" style="color:#F2C94C">Signs to watch for</h4><ul class="space-y-2 font-body text-xs opacity-65 leading-snug"><li>Expressing hopelessness or worthlessness</li><li>Giving away valued possessions (a serious warning sign)</li><li>Covering arms; very low energy levels</li></ul></div>
+          <div class="pt-5"><h4 class="font-body font-semibold text-sm mb-3" style="color:#F2C94C">What to do</h4><ul class="space-y-2 font-body text-xs opacity-65 leading-snug"><li>Take all expressions of hopelessness seriously</li><li>Asking about suicide does not plant the idea</li><li>DK: Livslinien 70 201 201 · BørneTelefonen 116 111</li></ul></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stalking -->
+    <div class="card card-h rounded-2xl overflow-hidden fu" onclick="togI('i5')">
+      <div class="p-6 md:p-7 flex items-start gap-5">
+        <div class="w-11 h-11 rounded-xl flex-shrink-0 flex items-center justify-center" style="background:rgba(220,140,40,.12)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#DC8C28" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-2"><span class="pg text-xs font-semibold px-2.5 py-0.5 rounded-full font-body">Higher risk: Girls</span><span class="pa text-xs font-semibold px-2.5 py-0.5 rounded-full font-body">Online: All genders</span></div>
+              <h3 class="font-display text-xl md:text-2xl font-semibold">Stalking and Violation of Personal Space</h3>
+            </div>
+            <div id="ic-i5" class="flex-shrink-0 transition-transform duration-300 mt-1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="opacity-30"><path d="M6 9l6 6 6-6"/></svg></div>
+          </div>
+          <p class="font-body text-sm opacity-50 mt-1.5">Repeated unwanted attention that invades a teenager's sense of safety, from physical following to obsessive digital monitoring and location tracking.</p>
+        </div>
+      </div>
+      <div class="xp" id="i5">
+        <div class="px-6 md:px-7 pb-7 grid md:grid-cols-3 gap-5 border-t sep border-t">
+          <div class="pt-5"><h4 class="font-body font-semibold text-sm mb-3" style="color:#F2C94C">What it looks like</h4><ul class="space-y-2 font-body text-xs opacity-65 leading-snug"><li>Someone repeatedly following your routes</li><li>Obsessive monitoring of social media</li><li>Repeated unwanted messages or calls</li></ul></div>
+          <div class="pt-5"><h4 class="font-body font-semibold text-sm mb-3" style="color:#F2C94C">Signs to watch for</h4><ul class="space-y-2 font-body text-xs opacity-65 leading-snug"><li>Persistent feeling of being watched</li><li>Anxiety when going outside alone</li></ul></div>
+          <div class="pt-5"><h4 class="font-body font-semibold text-sm mb-3" style="color:#F2C94C">What to do</h4><ul class="space-y-2 font-body text-xs opacity-65 leading-snug"><li>Keep all profiles private; do not share your location</li><li>Trust your instincts and report to police</li><li>DK: Politiet 114 · dsc.dk</li></ul></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Domestic Abuse -->
+    <div class="card card-h rounded-2xl overflow-hidden fu" onclick="togI('i6')">
+      <div class="p-6 md:p-7 flex items-start gap-5">
+        <div class="w-11 h-11 rounded-xl flex-shrink-0 flex items-center justify-center" style="background:rgba(180,60,200,.12)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B43CC8" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-2"><span class="pg text-xs font-semibold px-2.5 py-0.5 rounded-full font-body">Higher rates: Girls</span><span class="pb text-xs font-semibold px-2.5 py-0.5 rounded-full font-body">Underreported: Boys</span></div>
+              <h3 class="font-display text-xl md:text-2xl font-semibold">Domestic Abuse and Family Violence</h3>
+            </div>
+            <div id="ic-i6" class="flex-shrink-0 transition-transform duration-300 mt-1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="opacity-30"><path d="M6 9l6 6 6-6"/></svg></div>
+          </div>
+          <p class="font-body text-sm opacity-50 mt-1.5">Abuse within the family home affects all genders. Boys more often experience physical abuse; girls face more sexual and coercive control. Both types go drastically underreported.</p>
+        </div>
+      </div>
+      <div class="xp" id="i6">
+        <div class="px-6 md:px-7 pb-7 grid md:grid-cols-3 gap-5 border-t sep border-t">
+          <div class="pt-5"><h4 class="font-body font-semibold text-sm mb-3" style="color:#F2C94C">What it looks like</h4><ul class="space-y-2 font-body text-xs opacity-65 leading-snug"><li>Physical violence at home</li><li>Emotional manipulation or humiliation</li><li>Controlling behaviour over money and movement</li></ul></div>
+          <div class="pt-5"><h4 class="font-body font-semibold text-sm mb-3" style="color:#F2C94C">Signs to watch for</h4><ul class="space-y-2 font-body text-xs opacity-65 leading-snug"><li>Fear of going home</li><li>Making excuses for a family member's behaviour</li></ul></div>
+          <div class="pt-5"><h4 class="font-body font-semibold text-sm mb-3" style="color:#F2C94C">What to do</h4><ul class="space-y-2 font-body text-xs opacity-65 leading-snug"><li>It is never your fault</li><li>Tell a school counsellor or trusted adult</li><li>DK: Lev Uden Vold 1888</li></ul></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Discrimination -->
+    <div class="card card-h rounded-2xl overflow-hidden fu" onclick="togI('i7')">
+      <div class="p-6 md:p-7 flex items-start gap-5">
+        <div class="w-11 h-11 rounded-xl flex-shrink-0 flex items-center justify-center" style="background:rgba(80,130,220,.12)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5888d8" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-2"><span class="pa text-xs font-semibold px-2.5 py-0.5 rounded-full font-body">All genders and all backgrounds</span></div>
+              <h3 class="font-display text-xl md:text-2xl font-semibold">Prejudice, Discrimination and Hate</h3>
+            </div>
+            <div id="ic-i7" class="flex-shrink-0 transition-transform duration-300 mt-1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="opacity-30"><path d="M6 9l6 6 6-6"/></svg></div>
+          </div>
+          <p class="font-body text-sm opacity-50 mt-1.5">Targeting teenagers based on race, religion, sexuality, disability, gender expression, or appearance. This causes exclusion, trauma, and lasting identity damage.</p>
+        </div>
+      </div>
+      <div class="xp" id="i7">
+        <div class="px-6 md:px-7 pb-7 grid md:grid-cols-3 gap-5 border-t sep border-t">
+          <div class="pt-5"><h4 class="font-body font-semibold text-sm mb-3" style="color:#F2C94C">What it looks like</h4><ul class="space-y-2 font-body text-xs opacity-65 leading-snug"><li>Slurs and hate speech online and offline</li><li>Exclusion from groups based on identity</li><li>Targeted online harassment campaigns</li></ul></div>
+          <div class="pt-5"><h4 class="font-body font-semibold text-sm mb-3" style="color:#F2C94C">Signs to watch for</h4><ul class="space-y-2 font-body text-xs opacity-65 leading-snug"><li>Low self-esteem tied to identity</li><li>Shame or anxiety about background</li></ul></div>
+          <div class="pt-5"><h4 class="font-body font-semibold text-sm mb-3" style="color:#F2C94C">What to do</h4><ul class="space-y-2 font-body text-xs opacity-65 leading-snug"><li>Speak up — silence enables discrimination</li><li>Report hate speech on and offline</li><li>Schools are legally required to act</li></ul></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Questionnaire nudge -->
+  <div class="callout rounded-2xl p-8 text-center mt-12 fu">
+    <p class="font-body text-sm opacity-50 mb-2">Want to reflect on your own safety awareness?</p>
+    <h3 class="font-display text-2xl font-semibold mb-5">Take the Teen Safety Questionnaire</h3>
+    <a href="https://forms.gle/5Yh81QKjnnrcyfnr7" target="_blank" class="btn-t px-10 py-3.5 rounded-full text-sm font-body inline-block">
+      <span>📋 Start the Questionnaire</span>
+    </a>
+  </div>
+
+</section>
+
+<div class="div-l max-w-4xl mx-auto"></div>
+
+
+<!-- ===================== RESOURCES ===================== -->
+<section id="resources" class="py-28 max-w-6xl mx-auto px-6">
+
+  <div class="text-center mb-20 fu">
+    <p class="text-xs font-body font-semibold tracking-widest uppercase mb-4 opacity-55" style="color:#F2C94C">Help and Resources</p>
+    <h2 class="font-display text-4xl md:text-5xl font-semibold mb-5">Safety Tips and Support</h2>
+    <p class="font-body text-base opacity-55 max-w-2xl mx-auto">Practical steps every teenager should know, and where to turn when you need help.</p>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-5 mb-16">
+    <div class="card rounded-2xl p-7 fu" style="transition-delay:.04s">
+      <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-5" style="background:rgba(242,201,76,.12)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F2C94C" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3 class="font-display text-lg font-semibold mb-3">Your Digital Life</h3>
+      <ul class="space-y-2 font-body text-sm opacity-60 leading-snug">
+        <li>Set all social media accounts to private</li>
+        <li>Never share your address or school name online</li>
+        <li>Block and report uncomfortable contacts</li>
+        <li>Screenshot evidence of harassment</li>
+        <li>Tell an adult if asked to meet someone secretly</li>
+      </ul>
+    </div>
+    <div class="card rounded-2xl p-7 fu" style="transition-delay:.08s">
+      <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-5" style="background:rgba(42,157,143,.12)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A9D8F" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      </div>
+      <h3 class="font-display text-lg font-semibold mb-3">Out in the World</h3>
+      <ul class="space-y-2 font-body text-sm opacity-60 leading-snug">
+        <li>Share your location with trusted people</li>
+        <li>Walk confidently in well-lit areas</li>
+        <li>Trust your gut — leave if something feels wrong</li>
+        <li>Have a safety word with a trusted friend</li>
+        <li>Keep your phone charged and accessible</li>
+      </ul>
+    </div>
+    <div class="card rounded-2xl p-7 fu" style="transition-delay:.12s">
+      <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-5" style="background:rgba(242,201,76,.12)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F2C94C" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <h3 class="font-display text-lg font-semibold mb-3">Your Mental Health</h3>
+      <ul class="space-y-2 font-body text-sm opacity-60 leading-snug">
+        <li>You do not have to face this alone</li>
+        <li>Talking to someone is always the right move</li>
+        <li>Limit social media if it makes you feel worse</li>
+        <li>Set healthy boundaries on and offline</li>
+        <li>Seeking professional support is a sign of strength</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Denmark helplines -->
+  <div class="fu">
+    <div class="flex items-center gap-3 justify-center mb-3">
+      <span class="text-2xl">🇩🇰</span>
+      <h3 class="font-display text-2xl font-semibold">Danske Krisetelefoner</h3>
+    </div>
+    <p class="font-body text-sm opacity-40 text-center mb-8">Danish crisis helplines for young people · Støttetilbud for unge i Danmark</p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <div class="hl rounded-2xl p-5">
+        <div class="flex items-start justify-between gap-2 mb-1.5">
+          <div class="font-body font-semibold text-sm">Alarmcentralen</div>
+          <span class="bg-gold text-xs px-2.5 py-0.5 rounded-full font-body font-semibold">Nødsituation</span>
+        </div>
+        <div class="font-display text-2xl font-bold mb-2" style="color:#F2C94C">112</div>
+        <div class="font-body text-xs opacity-55 leading-snug">Immediate danger. Police, fire, ambulance. Always call for life-threatening situations.</div>
+      </div>
+
+      <div class="hl rounded-2xl p-5">
+        <div class="flex items-start justify-between gap-2 mb-1.5">
+          <div class="font-body font-semibold text-sm">BørneTelefonen</div>
+          <span class="bg-teal text-xs px-2.5 py-0.5 rounded-full font-body font-semibold">Unge · Gratis</span>
+        </div>
+        <div class="font-display text-2xl font-bold mb-2" style="color:#2A9D8F">116 111</div>
+        <div class="font-body text-xs opacity-55 leading-snug">Free and anonymous helpline for children and teens by Børns Vilkår. Available daily, year-round.</div>
+      </div>
+
+      <div class="hl rounded-2xl p-5">
+        <div class="flex items-start justify-between gap-2 mb-1.5">
+          <div class="font-body font-semibold text-sm">Livslinien</div>
+          <span class="bg-gold text-xs px-2.5 py-0.5 rounded-full font-body font-semibold">Krise · 24/7</span>
+        </div>
+        <div class="font-display text-2xl font-bold mb-2" style="color:#F2C94C">70 201 201</div>
+        <div class="font-body text-xs opacity-55 leading-snug">Suicide prevention and crisis support. Free, confidential, 24/7. Chat also available at livslinien.dk.</div>
+      </div>
+
+      <div class="hl rounded-2xl p-5">
+        <div class="flex items-start justify-between gap-2 mb-1.5">
+          <div class="font-body font-semibold text-sm">Lev Uden Vold</div>
+          <span class="bg-teal text-xs px-2.5 py-0.5 rounded-full font-body font-semibold">Vold i hjemmet</span>
+        </div>
+        <div class="font-display text-2xl font-bold mb-2" style="color:#2A9D8F">1888</div>
+        <div class="font-body text-xs opacity-55 leading-snug">National domestic violence hotline. Free, anonymous, day and night. Open to all genders.</div>
+      </div>
+
+      <div class="hl rounded-2xl p-5">
+        <div class="flex items-start justify-between gap-2 mb-1.5">
+          <div class="font-body font-semibold text-sm">Dansk Stalking Center</div>
+          <span class="bg-gold text-xs px-2.5 py-0.5 rounded-full font-body font-semibold">Stalking</span>
+        </div>
+        <div class="font-display text-2xl font-bold mb-2" style="color:#F2C94C">dsc.dk</div>
+        <div class="font-body text-xs opacity-55 leading-snug">Specialist guidance for stalking victims. Online contact available for teens and adults.</div>
+      </div>
+
+      <div class="hl rounded-2xl p-5">
+        <div class="flex items-start justify-between gap-2 mb-1.5">
+          <div class="font-body font-semibold text-sm">Center for Seksuelle Overgreb</div>
+          <span class="bg-teal text-xs px-2.5 py-0.5 rounded-full font-body font-semibold">Seksuelle Overgreb</span>
+        </div>
+        <div class="font-display text-2xl font-bold mb-2" style="color:#2A9D8F">Via hospital</div>
+        <div class="font-body text-xs opacity-55 leading-snug">Free specialist support at Danish hospitals for survivors. No police report required. See cso.dk for details.</div>
+      </div>
+
+      <div class="hl rounded-2xl p-5">
+        <div class="flex items-start justify-between gap-2 mb-1.5">
+          <div class="font-body font-semibold text-sm">Cyberhus</div>
+          <span class="bg-gold text-xs px-2.5 py-0.5 rounded-full font-body font-semibold">Online · 10 til 25 år</span>
+        </div>
+        <div class="font-display text-2xl font-bold mb-2" style="color:#F2C94C">cyberhus.dk</div>
+        <div class="font-body text-xs opacity-55 leading-snug">Anonymous online counselling for ages 10 to 25. Chat, forum, and one-on-one support in Danish.</div>
+      </div>
+
+      <div class="hl rounded-2xl p-5">
+        <div class="flex items-start justify-between gap-2 mb-1.5">
+          <div class="font-body font-semibold text-sm">Ventilen Danmark</div>
+          <span class="bg-teal text-xs px-2.5 py-0.5 rounded-full font-body font-semibold">Ensomhed</span>
+        </div>
+        <div class="font-display text-2xl font-bold mb-2" style="color:#2A9D8F">ventilen.dk</div>
+        <div class="font-body text-xs opacity-55 leading-snug">Support for young people experiencing loneliness or social isolation. Drop-in groups available nationwide.</div>
+      </div>
+
+      <div class="hl rounded-2xl p-5">
+        <div class="flex items-start justify-between gap-2 mb-1.5">
+          <div class="font-body font-semibold text-sm">Politiet (ikke-akut)</div>
+          <span class="bg-gold text-xs px-2.5 py-0.5 rounded-full font-body font-semibold">Politi</span>
+        </div>
+        <div class="font-display text-2xl font-bold mb-2" style="color:#F2C94C">114</div>
+        <div class="font-body text-xs opacity-55 leading-snug">Non-emergency police line. Report harassment, stalking, or threats not immediately life-threatening.</div>
+      </div>
+
+    </div>
+    <p class="font-body text-xs opacity-30 text-center mt-5">All services are free. Several offer anonymous contact. In immediate danger, always call 112.</p>
+  </div>
+
+</section>
+
+<div class="div-l max-w-4xl mx-auto"></div>
+
+
+<!-- ===================== TAKE ACTION ===================== -->
+<section id="action" class="py-24">
+  <div class="cta-band py-20 px-6">
+    <div class="max-w-3xl mx-auto text-center fu">
+      <p class="text-xs font-body font-semibold tracking-widest uppercase mb-5 opacity-55" style="color:#F2C94C">Take Action</p>
+      <h2 class="font-display font-semibold mb-7 leading-tight" style="font-size:clamp(2rem,5vw,3.2rem)">
+        Every teenager deserves<br/><span style="color:#F2C94C">to feel safe</span>
+      </h2>
+      <p class="font-body text-base opacity-60 mb-7 leading-relaxed max-w-2xl mx-auto">
+        Safety is not a gender issue — it is a human issue. Boys, girls, and non-binary teens all deserve protection, support, and the freedom to grow up without fear.
+      </p>
+      <p class="font-body text-base opacity-60 mb-12 leading-relaxed max-w-2xl mx-auto">
+        Speak up. Reach out. Listen without judgment. If something feels wrong, it probably is.
+      </p>
+      <div class="grid sm:grid-cols-3 gap-4 mb-12">
+        <div class="card rounded-2xl p-6 text-center"><div class="text-3xl mb-3">🗣️</div><div class="font-body font-semibold text-sm mb-1">Speak Up</div><div class="font-body text-xs opacity-50">Report what you see, hear, or experience</div></div>
+        <div class="card rounded-2xl p-6 text-center"><div class="text-3xl mb-3">🤝</div><div class="font-body font-semibold text-sm mb-1">Support Everyone</div><div class="font-body text-xs opacity-50">Boys need support too — check in on all your friends</div></div>
+        <div class="card rounded-2xl p-6 text-center"><div class="text-3xl mb-3">📚</div><div class="font-body font-semibold text-sm mb-1">Keep Learning</div><div class="font-body text-xs opacity-50">Share this knowledge with your community</div></div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#resources" class="btn-g px-10 py-3.5 rounded-full text-sm font-body inline-block">Find Support Now</a>
+        <a href="https://forms.gle/5Yh81QKjnnrcyfnr7" target="_blank" class="btn-t px-10 py-3.5 rounded-full text-sm font-body inline-block">
+          <span>📋 Take the Teen Safety Questionnaire</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div-l max-w-4xl mx-auto"></div>
+
+
+<!-- ===================== COMMENTS ===================== -->
+<section id="comments" class="py-24 max-w-4xl mx-auto px-6">
+
+  <div class="text-center mb-14 fu">
+    <p class="text-xs font-body font-semibold tracking-widest uppercase mb-4 opacity-55" style="color:#F2C94C">Community</p>
+    <h2 class="font-display text-4xl md:text-5xl font-semibold mb-5">Share Your Thoughts</h2>
+    <p class="font-body text-base opacity-50 max-w-xl mx-auto">A space for reflection, support, and shared experience. Names are optional — you can post anonymously.</p>
+  </div>
+
+  <div class="card rounded-2xl p-7 mb-8 fu">
+    <h3 class="font-display text-xl font-semibold mb-5">Leave a Thought</h3>
+    <div class="space-y-4">
+      <div>
+        <label class="font-body text-sm opacity-50 block mb-1.5">Name <span class="opacity-35">(optional)</span></label>
+        <input id="cname" type="text" class="ci" placeholder="Anonymous"/>
+      </div>
+      <div>
+        <label class="font-body text-sm opacity-50 block mb-1.5">Your comment <span style="color:#F2C94C">*</span></label>
+        <textarea id="ctext" class="ci resize-none" rows="4" placeholder="Share a thought, experience, or message of support..."></textarea>
+      </div>
+      <div class="flex items-center justify-between gap-4 pt-1 flex-wrap">
+        <p class="font-body text-xs opacity-30">Stored for this session only.</p>
+        <button onclick="postComment()" class="btn-g px-8 py-3 rounded-full text-sm font-body">Post Comment</button>
+      </div>
+      <div id="cerr" class="font-body text-sm hidden" style="color:#e05555">Please write something before submitting.</div>
+    </div>
+  </div>
+
+  <div id="clist" class="space-y-4 fu">
+    <div class="cbubble rounded-2xl p-5">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(242,201,76,.18)"><span class="font-display font-bold text-sm" style="color:#F2C94C">M</span></div>
+        <div><div class="font-body font-semibold text-sm">Mia</div><div class="font-body text-xs opacity-30">Just now</div></div>
+      </div>
+      <p class="font-body text-sm opacity-65 leading-relaxed">This helped me understand what a friend might be going through. I am going to reach out to her today.</p>
+    </div>
+    <div class="cbubble rounded-2xl p-5">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(42,157,143,.18)"><span class="font-display font-bold text-sm" style="color:#2A9D8F">A</span></div>
+        <div><div class="font-body font-semibold text-sm">Anonymous</div><div class="font-body text-xs opacity-30">2 minutes ago</div></div>
+      </div>
+      <p class="font-body text-sm opacity-65 leading-relaxed">Good to see boys are included here too. This really does affect everyone.</p>
+    </div>
+  </div>
+
+</section>
+
+<div class="div-l max-w-4xl mx-auto"></div>
+
+
+<!-- ===================== SOURCES ===================== -->
+<section id="sources" class="py-20 max-w-4xl mx-auto px-6">
+
+  <div class="text-center mb-10 fu">
+    <p class="text-xs font-body font-semibold tracking-widest uppercase mb-4 opacity-55" style="color:#F2C94C">Academic References</p>
+    <h2 class="font-display text-3xl font-semibold mb-3">Sources</h2>
+    <p class="font-body text-sm opacity-45 max-w-lg mx-auto">This page draws on the following peer-reviewed, institutional, and international research bodies.</p>
+  </div>
+
+  <div class="src rounded-2xl p-8 fu">
+    <div class="grid md:grid-cols-2 gap-x-10 gap-y-4">
+      <div class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background:#F2C94C"></div><div><div class="font-body font-semibold text-sm">Gallup Global Law and Order Index 2025</div><div class="font-body text-xs opacity-40 mt-0.5">Gallup World Poll — annual perceived safety survey</div></div></div>
+      <div class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background:#2A9D8F"></div><div><div class="font-body font-semibold text-sm">Gallup World Poll</div><div class="font-body text-xs opacity-40 mt-0.5">gallup.com — safety, wellbeing, and social trust data</div></div></div>
+      <div class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background:#F2C94C"></div><div><div class="font-body font-semibold text-sm">UNICEF Adolescent Health and Safety Reports</div><div class="font-body text-xs opacity-40 mt-0.5">unicef.org — cyberbullying, violence, and teen wellbeing</div></div></div>
+      <div class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background:#2A9D8F"></div><div><div class="font-body font-semibold text-sm">WHO Violence Against Women Prevalence 2023</div><div class="font-body text-xs opacity-40 mt-0.5">World Health Organization — global and regional estimates</div></div></div>
+      <div class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background:#F2C94C"></div><div><div class="font-body font-semibold text-sm">WHO Adolescent Mental Health Factsheets</div><div class="font-body text-xs opacity-40 mt-0.5">who.int — suicide, self-harm, and adolescent wellbeing</div></div></div>
+      <div class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background:#2A9D8F"></div><div><div class="font-body font-semibold text-sm">UN Women Global Database on Violence</div><div class="font-body text-xs opacity-40 mt-0.5">evaw.unwomen.org — country-level legislation and data</div></div></div>
+      <div class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background:#F2C94C"></div><div><div class="font-body font-semibold text-sm">UNODC and UN Women Global Femicide Reports</div><div class="font-body text-xs opacity-40 mt-0.5">Joint reports on femicide and gender-related killings</div></div></div>
+      <div class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background:#2A9D8F"></div><div><div class="font-body font-semibold text-sm">EU FRA Violence Against Women Survey</div><div class="font-body text-xs opacity-40 mt-0.5">European Union Agency for Fundamental Rights</div></div></div>
+      <div class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background:#F2C94C"></div><div><div class="font-body font-semibold text-sm">Eurostat Gender-Based Violence Statistics</div><div class="font-body text-xs opacity-40 mt-0.5">ec.europa.eu/eurostat — European comparative data</div></div></div>
+      <div class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background:#2A9D8F"></div><div><div class="font-body font-semibold text-sm">EIGE European Institute for Gender Equality</div><div class="font-body text-xs opacity-40 mt-0.5">eige.europa.eu — Gender Equality Index and policy analysis</div></div></div>
+      <div class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background:#F2C94C"></div><div><div class="font-body font-semibold text-sm">Women, Peace and Security Index</div><div class="font-body text-xs opacity-40 mt-0.5">Georgetown Institute for Women, Peace and Security</div></div></div>
+      <div class="flex items-start gap-3"><div class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style="background:#2A9D8F"></div><div><div class="font-body font-semibold text-sm">CDC Youth Risk Behavior Survey (US)</div><div class="font-body text-xs opacity-40 mt-0.5">cdc.gov — US adolescent health and violence surveillance</div></div></div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="ft py-12 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-8 mb-10">
+      <div>
+        <div class="font-display text-xl font-semibold mb-3" style="color:#F2C94C">SAFE·TEEN</div>
+        <p class="font-body text-sm opacity-40 leading-relaxed">Created for awareness and education about teenager safety, for boys, girls, and all teens. Not a substitute for professional advice or emergency services.</p>
+      </div>
+      <div>
+        <div class="font-body font-semibold text-sm mb-4 opacity-50">Quick Links</div>
+        <div class="space-y-2 text-sm font-body">
+          <a href="#reality"   class="block opacity-40 hover:opacity-70 transition-opacity">The Reality</a>
+          <a href="#global"    class="block opacity-40 hover:opacity-70 transition-opacity">Global Safety</a>
+          <a href="#issues"    class="block opacity-40 hover:opacity-70 transition-opacity">Main Issues</a>
+          <a href="#resources" class="block opacity-40 hover:opacity-70 transition-opacity">Resources</a>
+          <a href="#comments"  class="block opacity-40 hover:opacity-70 transition-opacity">Share Thoughts</a>
+          <a href="#sources"   class="block opacity-40 hover:opacity-70 transition-opacity">Sources</a>
+        </div>
+      </div>
+      <div>
+        <div class="font-body font-semibold text-sm mb-4 opacity-50">Disclaimer</div>
+        <p class="font-body text-sm opacity-40 leading-relaxed">Statistics are illustrative and based on published research. In danger, call 112 (Denmark) or your local emergency number immediately.</p>
+      </div>
+    </div>
+    <div class="div-l mb-7"></div>
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="font-body text-xs opacity-30">Made for awareness · Education · Youth Safety · All Genders</p>
+      <p class="font-body text-xs opacity-30">Sources: WHO · UNICEF · Gallup · EU FRA · EIGE · UN Women · CDC</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ===================== JAVASCRIPT ===================== -->
+<script>
+/* ── Theme ── */
+function toggleTheme(){
+  const h=document.documentElement,l=document.getElementById('thm-lbl');
+  if(h.classList.contains('dark')){ h.classList.replace('dark','light'); l.textContent='Light'; }
+  else { h.classList.replace('light','dark'); l.textContent='Dark'; }
+}
+
+/* ── Mobile nav ── */
+function togMob(){ document.getElementById('mob-nav').classList.toggle('hidden'); }
+function closeMob(){ document.getElementById('mob-nav').classList.add('hidden'); }
+
+/* ── Country data ── */
+const countries = [
+  { flag:'🇸🇬', name:'Singapore',               pct:98, tier:'high', badge:'Number 1 Safest · Gallup 2025', badgeType:'gold',
+    note:'The world\'s safest perceived country. Extremely low street crime and strong rule of law. For teenagers, academic pressure is the dominant concern alongside growing cyberbullying rates among secondary students.' },
+  { flag:'🇹🇯', name:'Tajikistan',               pct:95, tier:'high', badge:'Number 2 Safest · Gallup 2025', badgeType:'teal',
+    note:'Second safest globally for night-time street safety. Strong community cohesion drives high scores. Teen girls face risks around early marriage and domestic pressure that go underreported. Boys experience limited emotional support due to honour culture norms.' },
+  { flag:'🇮🇸', name:'Iceland',                  pct:93, tier:'high', badge:'', badgeType:'',
+    note:'Consistently ranked at the top of global gender equality indices. Very low violent crime. Rising teen anxiety and social media-linked mental health challenges are the primary concerns for adolescents.' },
+  { flag:'🇳🇴', name:'Norway',                   pct:91, tier:'high', badge:'', badgeType:'',
+    note:'Excellent mental health support systems for teens. School bullying programmes are well-funded. Rising gang-related activity in Oslo suburbs has emerged as a newer concern specifically for teenage boys in certain postcodes.' },
+  { flag:'🇯🇵', name:'Japan',                    pct:91, tier:'high', badge:'', badgeType:'',
+    note:'Among the safest for street safety globally. However, school bullying (ijime) is a severe documented crisis. Teen suicide is the leading cause of death for ages 10 to 19. Pressure to conform is intense; LGBTQ+ teens face high rates of family rejection and social isolation.' },
+  { flag:'🇨🇳', name:'China',                    pct:91, tier:'high', badge:'', badgeType:'',
+    note:'Very high perceived street safety. Teen suicide linked to academic pressure (gaokao exam culture) is a documented public health concern (WHO). School bullying, both physical and cyber, is increasingly studied. LGBTQ+ teens face significant social and family pressure.' },
+  { flag:'🇩🇰', name:'Denmark',                  pct:89, tier:'high', badge:'', badgeType:'',
+    note:'Ranks highly on EIGE\'s gender equality index. Strong institutional support via BørneTelefonen, Lev Uden Vold, and Cyberhus. Higher survey-disclosed rates reflect a strong reporting culture rather than more violence. Cyberbullying among teens aged 13 to 17 is a growing tracked concern.' },
+  { flag:'🇫🇮', name:'Finland',                  pct:88, tier:'high', badge:'', badgeType:'',
+    note:'Very low violent crime. Finland invests heavily in school wellbeing and mental health services. Rising teen anxiety and social media-linked challenges are the primary safety concern for adolescents.' },
+  { flag:'🇹🇲', name:'Turkmenistan',             pct:88, tier:'high', badge:'', badgeType:'',
+    note:'High perceived safety, though independent data is limited due to restricted media access. Adolescent mental health infrastructure is underdeveloped. International organisations have limited access, making comprehensive teen safety data difficult to verify independently.' },
+  { flag:'🇰🇷', name:'South Korea',              pct:87, tier:'high', badge:'', badgeType:'',
+    note:'Very safe streets but extreme academic pressure drives teen burnout and self-harm. School violence and cyberbullying are tracked as serious issues. LGBTQ+ teens face institutional and family-based discrimination. Government teen counselling services exist but are underused.' },
+  { flag:'🇸🇪', name:'Sweden',                   pct:82, tier:'mid', badge:'', badgeType:'',
+    note:'Generally safe with a strong welfare system. Gang-related shootings have increased in Malmö and Gothenburg, primarily affecting teenage boys in certain postcodes. Cyberbullying and sexual harassment rates are carefully tracked by Swedish authorities. Online risks mirror other Nordic countries.' },
+  { flag:'🇺🇿', name:'Uzbekistan',               pct:84, tier:'high', badge:'', badgeType:'',
+    note:'Legislative reforms on domestic violence introduced since 2019. High community safety perception. Early marriage among teenage girls in rural regions is tracked by UNICEF as a risk factor. Teen mental health resources are limited compared to Western Europe.' },
+  { flag:'🇰🇿', name:'Kazakhstan',               pct:82, tier:'mid', badge:'', badgeType:'',
+    note:'Good perceived safety. Teen physical violence and school bullying are documented concerns. Gender-based violence legislation has improved. Rural and urban disparities mean teens in rural areas face different risks with fewer available support services.' },
+  { flag:'🇦🇿', name:'Azerbaijan',               pct:80, tier:'mid', badge:'', badgeType:'',
+    note:'High street safety in Baku. Teen girls in rural regions face early marriage pressure. Online harassment has increased with smartphone penetration. Boys are affected by nationalist pressure and limited mental health support culture.' },
+  { flag:'🇰🇬', name:'Kyrgyzstan',               pct:80, tier:'mid', badge:'', badgeType:'',
+    note:'Challenges include bride kidnapping (ala kachuu) which disproportionately affects teenage girls. UNICEF and local NGOs run active awareness campaigns. Teen substance abuse among boys is a growing public health concern.' },
+  { flag:'🇦🇲', name:'Armenia',                  pct:79, tier:'mid', badge:'', badgeType:'',
+    note:'Relatively high safety perception. Teen girls face challenges around gender norms and limited sexual health education. Boys are at risk from regional conflict-related contexts. Bullying in schools and online harassment are documented by UNICEF Armenia.' },
+  { flag:'🇪🇪', name:'Estonia',                  pct:79, tier:'mid', badge:'', badgeType:'',
+    note:'Highly digitised society with a strong cybersecurity culture. Teens face significant online harassment. One of Europe\'s most advanced e-governance systems supports reporting. Mental health services for teens have expanded in recent years.' },
+  { flag:'🇪🇸', name:'Spain',                    pct:79, tier:'mid', badge:'', badgeType:'',
+    note:'"Only Yes Means Yes" consent legislation enacted in 2022. Gender-based violence rates are tracked publicly. Youth awareness campaigns have grown significantly in schools. EU FRA places Spain around the EU average for lifetime violence disclosures.' },
+  { flag:'🇬🇪', name:'Georgia',                  pct:78, tier:'mid', badge:'', badgeType:'',
+    note:'Growing youth rights activism and improving institutional responses. LGBTQ+ teens face high risks of family rejection and public harassment. School bullying is documented. Active civil society runs UNFPA and UNICEF adolescent health programmes.' },
+  { flag:'🇱🇻', name:'Latvia',                   pct:76, tier:'mid', badge:'', badgeType:'',
+    note:'Generally safe streets. School bullying is above the EU average per OECD data. Alcohol use among teenagers is a documented public health concern. Rural areas have fewer mental health resources available for adolescents.' },
+  { flag:'🇩🇪', name:'Germany',                  pct:76, tier:'mid', badge:'', badgeType:'',
+    note:'"No means no" sexual assault law enacted in 2016. The youth protection agency Jugendamt provides a robust safety net. Cyberbullying is a significant concern. Eurostat places Germany near the EU average with an upward trend in reporting driven by improved awareness.' },
+  { flag:'🇱🇹', name:'Lithuania',                pct:75, tier:'mid', badge:'', badgeType:'',
+    note:'Has one of the EU\'s highest teen male suicide rates — a critical public health concern. Street safety is generally good. Mental health infrastructure for adolescents needs strengthening. UNICEF runs active programmes to address youth mental health and bullying.' },
+  { flag:'🇧🇦', name:'Bosnia and Herzegovina',   pct:74, tier:'mid', badge:'', badgeType:'',
+    note:'Post-conflict legacy influences teen mental health, with intergenerational trauma documented among adolescents. Bullying rates in schools are above regional averages per UNICEF surveys. Human trafficking remains a concern for vulnerable teenagers. Youth mental health has improved with EU support.' },
+  { flag:'🇺🇸', name:'USA',                      pct:73, tier:'mid', badge:'', badgeType:'',
+    note:'The CDC Youth Risk Behavior Survey (2023) finds about 16% of US high-schoolers were bullied at school and 15% online. Firearm violence is the leading cause of teen death. 1 in 5 teen girls and 1 in 14 teen boys have experienced sexual violence. Teen mental health has deteriorated significantly since 2012.' },
+  { flag:'🇫🇷', name:'France',                   pct:73, tier:'mid', badge:'', badgeType:'',
+    note:'Anti-street harassment laws introduced in 2018. Surveys suggest 1 in 2 girls aged 14 to 18 experience unwanted online contact. Reporting structures improved significantly after the global awareness movement. EU FRA places France slightly above the EU average for lifetime disclosures.' },
+  { flag:'🇹🇷', name:'Türkiye',                  pct:71, tier:'warn', badge:'', badgeType:'',
+    note:'Mixed profile. Urban teens face cyberbullying and street harassment. LGBTQ+ teens face severe legal and social risks. Teen femicide rates are tracked nationally. Boys face elevated risks of physical violence in some urban areas.' },
+  { flag:'🇷🇺', name:'Russia',                   pct:68, tier:'warn', badge:'', badgeType:'',
+    note:'Below-average perceived safety. High rates of teen male physical violence, alcohol abuse, and completed suicide. LGBTQ+ teenagers face severe legal and social risks following anti-propaganda laws. Domestic violence legislation has been weakened in recent reforms. Teen mental health resources are limited and heavily stigmatised.' },
+  { flag:'🇧🇩', name:'Bangladesh',               pct:61, tier:'warn', badge:'', badgeType:'',
+    note:'Teen girls face elevated risks of sexual harassment in public and online spaces, alongside early marriage pressure. Cyberbullying is rising rapidly among urban teens. Boys face physical violence in school contexts. Child marriage rates, while declining, remain above global averages.' },
+  { flag:'🇮🇳', name:'India',                    pct:57, tier:'warn', badge:'', badgeType:'',
+    note:'Significant variation by state, urban or rural context, and gender. Teen girls face elevated risks of sexual harassment and stalking in public spaces. Boys face high rates of physical bullying. Online harassment is rapidly increasing with smartphone penetration. Active civil society movements and awareness campaigns have grown substantially in recent years.' },
+  { flag:'🇵🇰', name:'Pakistan',                 pct:55, tier:'warn', badge:'', badgeType:'',
+    note:'Teen girls face significant risks around early marriage, sexual violence, and restricted mobility. Boys in certain regions face gang recruitment and physical violence. Honour-based violence is a documented concern. UNICEF and NGOs run child protection programmes though coverage is uneven across regions.' },
+  { flag:'🇿🇦', name:'South Africa',             pct:33, tier:'low',  badge:'One of the Lowest · Gallup 2025', badgeType:'red',
+    note:'The lowest Gallup safety score among measured countries. Among the world\'s highest femicide rates (UNODC and UN Women). Teen boys face severe risks from gang violence and physical assault; teen girls face high rates of sexual violence. However, South Africa has one of the world\'s most active and growing civil society sectors for youth protection.' },
+];
+
+// Sort descending
+countries.sort((a,b)=>b.pct-a.pct);
+
+// Build bar chart
+const barCt = document.getElementById('bar-ct');
+const tierColors = { high:'#2A9D8F', mid:'#F2C94C', warn:'#DC8830', low:'#E05050' };
+countries.forEach(c=>{
+  const row=document.createElement('div');
+  row.className='mb-1';
+  row.innerHTML=`
+    <div class="flex items-center justify-between font-body text-sm mb-1 gap-3">
+      <span class="opacity-65 flex items-center gap-1.5"><span>${c.flag}</span><span class="truncate">${c.name}</span></span>
+      <span class="font-semibold flex-shrink-0" style="color:${tierColors[c.tier]}">${c.pct}%</span>
+    </div>
+    <div class="rounded-full overflow-hidden" style="height:5px;background:rgba(255,255,255,.07)">
+      <div class="sbar" style="background:${tierColors[c.tier]}" data-w="${c.pct}"></div>
+    </div>`;
+  barCt.appendChild(row);
+});
+
+// Animate bars on scroll
+const bObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ document.querySelectorAll('.sbar').forEach(b=>b.style.width=b.dataset.w+'%'); bObs.disconnect(); } });
+},{threshold:.1});
+bObs.observe(barCt);
+
+// Build individual country cards
+const grid = document.getElementById('country-grid');
+countries.forEach((c,idx)=>{
+  const borderClass = c.tier==='high' ? 'cc-teal' : c.tier==='low' ? 'cc-red' : c.tier==='warn' ? 'cc-warn' : 'cc-gold';
+  const scoreClass  = c.tier==='high' ? 's-high' : c.tier==='low' ? 's-low' : c.tier==='warn' ? 's-warn' : 's-mid';
+  const badgeHTML   = c.badge ? `<span class="bg-${c.badgeType==='gold'?'gold':c.badgeType==='teal'?'teal':'red'} text-xs px-2.5 py-0.5 rounded-full font-body font-semibold">${c.badge}</span>` : '';
+  const panelId     = `cp${idx}`;
+  const chevId      = `cch${idx}`;
+  const div=document.createElement('div');
+  div.className=`cc ${borderClass} rounded-2xl overflow-hidden fu`;
+  div.innerHTML=`
+    <div class="p-5 cursor-pointer" onclick="togCP('${panelId}','${chevId}')">
+      <div class="flex items-start justify-between gap-3">
+        <div class="flex items-start gap-3 flex-1 min-w-0">
+          <span class="text-2xl flex-shrink-0">${c.flag}</span>
+          <div class="min-w-0">
+            <div class="font-display text-base font-semibold truncate">${c.name}</div>
+            <div class="flex flex-wrap items-center gap-1.5 mt-1">
+              <span class="font-body text-xs font-bold ${scoreClass}">${c.pct}%</span>
+              ${badgeHTML}
+            </div>
+          </div>
+        </div>
+        <div id="${chevId}" class="transition-transform duration-300 flex-shrink-0 mt-1">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="opacity-35"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+    </div>
+    <div id="${panelId}" class="xp">
+      <div class="px-5 pb-5 pt-4 border-t sep border-t font-body text-sm opacity-65 leading-relaxed">${c.note}</div>
+    </div>`;
+  grid.appendChild(div);
+});
+
+// Country card accordion (independent — multiple can be open)
+function togCP(panelId, chevId){
+  const p=document.getElementById(panelId);
+  const c=document.getElementById(chevId);
+  const open=p.classList.contains('open');
+  p.classList.toggle('open');
+  if(c) c.style.transform=open?'':'rotate(180deg)';
+}
+
+/* ── Issues accordion ── */
+const ISSUES=['i1','i2','i3','i4','i5','i6','i7'];
+function togI(id){
+  const p=document.getElementById(id),c=document.getElementById('ic-'+id),open=p.classList.contains('open');
+  ISSUES.forEach(i=>{ document.getElementById(i)?.classList.remove('open'); const ch=document.getElementById('ic-'+i); if(ch) ch.style.transform=''; });
+  if(!open){ p.classList.add('open'); if(c) c.style.transform='rotate(180deg)'; }
+}
+
+/* ── Comments ── */
+function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function postComment(){
+  const name=document.getElementById('cname').value.trim()||'Anonymous';
+  const text=document.getElementById('ctext').value.trim();
+  const err=document.getElementById('cerr');
+  if(!text){ err.classList.remove('hidden'); return; }
+  err.classList.add('hidden');
+  document.getElementById('cname').value='';
+  document.getElementById('ctext').value='';
+  const cols=['#F2C94C','#2A9D8F','#e06080','#5888d8'];
+  const ic=cols[Math.floor(Math.random()*cols.length)];
+  const d=document.createElement('div');
+  d.className='cbubble rounded-2xl p-5 fu';
+  d.innerHTML=`
+    <div class="flex items-center gap-3 mb-3">
+      <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:${ic}28">
+        <span class="font-display font-bold text-sm" style="color:${ic}">${esc(name.charAt(0).toUpperCase())}</span>
+      </div>
+      <div><div class="font-body font-semibold text-sm">${esc(name)}</div><div class="font-body text-xs opacity-30">Just now</div></div>
+    </div>
+    <p class="font-body text-sm opacity-65 leading-relaxed">${esc(text)}</p>`;
+  const list=document.getElementById('clist');
+  list.insertBefore(d,list.firstChild);
+  setTimeout(()=>d.classList.add('on'),40);
+}
+
+/* ── Progress bar ── */
+window.addEventListener('scroll',()=>{
+  const s=window.scrollY, t=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('pb').style.width=(s/t*100)+'%';
+},{passive:true});
+
+/* ── Fade-up observer ── */
+const fObs=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('on'); }); },{threshold:.07});
+document.querySelectorAll('.fu').forEach(el=>fObs.observe(el));
+</script>
+</body>
+</html>
